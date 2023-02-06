@@ -30,6 +30,7 @@ life_expectancy_charts = mesa.visualization.ChartModule([
     {"Label": "Mangrove Fertility", "Color": "blue"}
 ])
 
+# Sliders for modifiying parameters
 model_params = {
     "mangrove_fertility": mesa.visualization.Slider("Mangrove fertility", 0.6, 0, 1, 0.1),
     "mangrove_life_expectancy": mesa.visualization.Slider("Mangrove Life Expectancy", 5, 0, 20, 1),

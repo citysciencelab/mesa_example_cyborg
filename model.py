@@ -9,6 +9,7 @@ class Cyborg(Model):
     mangrove_count = 0
     mangrove_fertility = 0.6
     mangrove_life_expectancy = 5
+    mangrove_density = 0.3
 
     def __init__(
         self, 
@@ -61,13 +62,15 @@ class Cyborg(Model):
     @property
     def avg_mangrove_fertility(self) -> float:
         # get all the mangroves and their average fertility
-        # print(self.schedule.agents)
         mangroves_fertility = [agent.fertility for agent in self.schedule.agents if isinstance(agent, Mangrove)]
-        # print(mangroves_fertility)
-        return sum(mangroves_fertility) / len(mangroves_fertility)
+        # return 0 if all mangroves are dead
+        if len(mangroves_fertility) == 0: return 0
+        else: return sum(mangroves_fertility) / len(mangroves_fertility)
 
     @property
     def avg_mangrove_life_expectancy(self) -> float:
         # get all the mangroves and their average fertility
         mangroves_life_expectancy = [agent.life for agent in self.schedule.agents if isinstance(agent, Mangrove)]
-        return sum(mangroves_life_expectancy) / len(mangroves_life_expectancy)
+        # return 0 if all mangroves are dead
+        if len(mangroves_life_expectancy) == 0: return 0
+        else: return sum(mangroves_life_expectancy) / len(mangroves_life_expectancy)
